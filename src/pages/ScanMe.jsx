@@ -1,18 +1,22 @@
-import React from 'react';
-import Navigation from '../components/Navigation';
-import spinner from "../assets/spinner.gif"
-import Navbar from '../components/Navbar';
+import React from "react";
+import Navigation from "../components/Navigation";
+import Navbar from "../components/Navbar";
+import FridgeOpen from "../components/FridgeOpen";
+import Paid from "../components/Paid";
+import Error from "../components/Error";
+import done from "../assets/done.png"
+import spinner from "../assets/spinner.gif";
 const ScanMe = () => {
-    return ( 
-        <div className='h-100'>
-            <Navbar title={"Сканирование"}/>
-            <div className='h-100 d-flex align-items-center justify-content-center flex-column'>
-                <img src={spinner} style={{width: "80px", height: "80px"}}></img>
-                <p className='fs-6 mt-3' style={{color: '#7cb342' }} >Холодильник открыт</p>
-            </div>
-            <Navigation/>
-        </div>
-     );
-}
- 
+  const status = 400;
+  return (
+    <div className="h-100">
+      <Navbar title={"Сканирование"} />
+      {status == 200 ? <FridgeOpen />  : <Paid /> }
+      <Navigation />
+
+      
+    </div>
+  );
+};
+
 export default ScanMe;

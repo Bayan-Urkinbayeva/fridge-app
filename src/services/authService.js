@@ -1,12 +1,9 @@
 import http from "./httpService";
 
-const apiEndpoint = process.env.REACT_APP_API_URL + "/auth";
-
+const apiEndpoint = process.env.REACT_APP_API_URL + "/users/login";
 http.setJwt(getJwt());
-
-export async function login(email, password) {
-  const { data: jwt } = await http.post(apiEndpoint, { email, password });
-  localStorage.setItem("token", jwt);
+export function login(email, password) {
+  return http.post(apiEndpoint, { "login": email, password });
 }
 
 export function logout() {
@@ -25,4 +22,5 @@ export default {
   login,
   logout,
   getJwt,
+  setJwt
 };

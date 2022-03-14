@@ -8,15 +8,16 @@ import Order from './pages/Order'
 import Registration from "./pages/Registration"
 import Login from "./pages/Login"
 import ScanMe from './pages/ScanMe'
+import ProtectedRoute from './components/protectedRoute'
 function App() {
   return (
     <div className="App">
       
       <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path='/orders/:id' element={<Order/>}/>
-        <Route exact  path="/orders" element={<Orders/>} />
-        <Route exact path ="/profile" element={<Profile/>}/>
+        <Route exact path="/" element={ <ProtectedRoute><Home/></ProtectedRoute>} />
+        <Route exact path='/orders/:id' element={<ProtectedRoute><Order/></ProtectedRoute>}/>
+        <Route exact  path="/orders" element={<ProtectedRoute><Orders/></ProtectedRoute>} />
+        <Route exact path ="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
         <Route exact path="/registration" element={<Registration/>}  />
         <Route exact path="/login" element={<Login/>}  />
         <Route exact path="/scanme" element={<ScanMe/>}  />

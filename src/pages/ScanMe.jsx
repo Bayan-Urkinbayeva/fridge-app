@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import spinner from "./spinner.gif"
+import spinner from "../assets/spinner.gif"
 import Navbar from '../components/Navbar';
 const ScanMe = () => {
     return ( 

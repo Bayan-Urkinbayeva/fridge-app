@@ -7,12 +7,12 @@ import Error from "../components/Error";
 import done from "../assets/done.png";
 import spinner from "../assets/spinner.gif";
 const ScanMe = () => {
-  const status = 400;
+  const status = 200;
   return (
     <div className="h-100">
       <Navbar title={"Сканирование"} />
       {status == 200 ? <FridgeOpen /> : <Paid />}
-      <Navigation />
+      {/* <Navigation /> */}
     </div>
   );
 };

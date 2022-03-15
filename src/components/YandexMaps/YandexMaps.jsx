@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
+
 const YandexMaps = () => {
   let [currentLatitude, setcurrentLatitude] = useState(43.23364);
   let [currentLongitude, setcurrentLongitude] = useState(76.779491);

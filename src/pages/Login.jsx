@@ -12,7 +12,7 @@ const Login = () => {
       const token = data.data.token;
       localStorage.setItem("token", token);
       setJwt();
-      if (data.status == false) return alert(data.message);
+      if (data.status == false) alert(data.message);
       window.location = "/";
     } catch (ex) {
       console.log(ex);

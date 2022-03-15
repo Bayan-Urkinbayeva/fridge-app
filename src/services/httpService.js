@@ -1,6 +1,6 @@
 import axios from "axios";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-  
+
 axios.interceptors.response.use(null, (error) => {
   const expectedError =
     error.response &&
@@ -11,6 +11,7 @@ axios.interceptors.response.use(null, (error) => {
   }
   return Promise.reject(error);
 });
+
 function setJwt(jwt) {
   axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
   console.log(jwt);

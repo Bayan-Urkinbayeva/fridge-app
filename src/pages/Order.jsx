@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Navigation from "../components/Navigation";
 const Order = () => {
   let { id } = useParams();
-//   console.log(id);
+  //   console.log(id);
   return (
     <div>
       <Navbar title={"Покупка №" + id} />

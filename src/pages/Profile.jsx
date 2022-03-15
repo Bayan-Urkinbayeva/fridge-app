@@ -5,6 +5,7 @@ const Profile = () => {
   return (
     <div>
       <Navbar title={"Профиль"} />
+      <button className="btn btn-primary">Выйти</button>
       <Navigation />
     </div>
   );

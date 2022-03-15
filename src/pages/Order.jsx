@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Navigation from "../components/Navigation";
+import { getOrder } from "../services/ordersService";
+
 const Order = () => {
-  let { id } = useParams();
-  //   console.log(id);
+  const { id } = useParams();
+  useEffect(async () => {
+    const res = await getOrder(id);
+    console.log(res);
+  }, []);
   return (
     <div>
       <Navbar title={"Покупка №" + id} />

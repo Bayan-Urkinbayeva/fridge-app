@@ -17,6 +17,19 @@ function setJwt(jwt) {
   axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
 }
 
+(function () {
+  const token = localStorage.getItem("token");
+  console.log("request call");
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = token;
+  } else {
+    axios.defaults.headers.common["Authorization"] = null;
+    /*if setting null does not remove `Authorization` header then try     
+        delete axios.defaults.headers.common['Authorization'];
+      */
+  }
+})();
+
 export default {
   get: axios.get,
   post: axios.post,

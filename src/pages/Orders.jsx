@@ -3,17 +3,21 @@ import Navigation from "../components/Navigation";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getOrders } from "../services/ordersService";
+import Spinner from "../components/Spiner";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(async () => {
     const res = await getOrders();
+    setLoading(false);
     setOrders(res.data.data);
   }, []);
   return (
     <div>
       <Navbar title={"Покупки"} />
       <div className="p-2 pt-5 mt-3">
+        {loading && <Spinner />}
         <div className="list-group">
           {orders.map((order) => (
             <Link

@@ -23,9 +23,7 @@ const Registration = () => {
   };
 
   useEffect(() => {
-    // console.log(errors);
     if (Object.keys(errors).length === 0 && isSubmit) {
-      // console.log(data);
       window.location = "/";
     }
   }, [errors]);
@@ -56,7 +54,6 @@ const Registration = () => {
   return (
     <div className="d-flex align-items-center h-100">
       <main className="form-signin m-auto w-100" style={{ maxWidth: "300px" }}>
-        <pre>{JSON.stringify(data, undefined, 2)}</pre>
         <form onSubmit={(e) => onSubmit(e)}>
           <h1 className="text-center">🍏</h1>
           <h1 className="h3 mb-3 fw-normal text-center fw-bold">Grab it</h1>

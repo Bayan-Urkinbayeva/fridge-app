@@ -12,7 +12,6 @@ const ScanMe = () => {
     <div className="h-100">
       <Navbar title={"Сканирование"} />
       {status == 200 ? <FridgeOpen /> : <Paid />}
-      {/* <Navigation /> */}
     </div>
   );
 };

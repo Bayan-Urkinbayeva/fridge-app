@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 const Home = () => {
   return (
     <div>
-      <Navbar title={"Grab it"} />
+      <Navbar title={"Grab it 🍏"} />
       <YandexMaps />
       <Navigation />
     </div>

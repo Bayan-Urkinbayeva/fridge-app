@@ -1,11 +1,7 @@
 import React from "react";
-import Navigation from "../components/Navigation";
 import Navbar from "../components/Navbar";
 import FridgeOpen from "../components/FridgeOpen";
 import Paid from "../components/Paid";
-import Error from "../components/Error";
-import done from "../assets/done.png";
-import spinner from "../assets/spinner.gif";
 const ScanMe = () => {
   const status = 200;
   return (

@@ -1,40 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
+import { setJwt } from "../services/authService";
+import { register } from "../services/userService";
 const Registration = () => {
   const [data, setData] = useState({
     name: "",
-    surname: "",
+    phone_number: "",
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleInput = (e) => {
     const copy = { ...data };
     copy[e.target.name] = e.target.value;
     setData(copy);
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setErrors(validate(data));
-    setIsSubmit(true);
-  };
+    const errors = validate(data);
+    if (Object.keys(errors).length === 0) {
+      try {
+        const body = {
+          name: data.name,
+          phone_number: data.phone_number,
+          email: data.email,
+          password: data.password,
+        };
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmit) {
+        console.log(body);
+        const response = await register(body);
+        const token = response.data.data.token;
+        localStorage.setItem("token", token);
+        setJwt();
+      } catch (ex) {
+        console.log(ex);
+      }
       window.location = "/";
     }
-  }, [errors]);
+  };
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
       errors.name = "Поле имя не может быть пустым";
     }
-    if (!values.surname) {
-      errors.surname = "Поле фамилия не может быть пустым";
+    if (!values.phone_number) {
+      errors.phone_number = "Поле номер телефона не может быть пустым";
+    } else if (values.phone_number.length !== 11) {
+      errors.phone_number = "Неправильный номер телефона";
     }
     if (!values.email) {
       errors.email = "Поле почта не может быть пустым";
@@ -69,18 +85,20 @@ const Registration = () => {
             onChange={handleInput}
           />
           <p className="text-danger">{errors.name}</p>
-          <label for="surname" className="mb-1">
-            Фамилия
+
+          <label for="phone_number" className="mb-1">
+            Номер телефона
           </label>
           <input
             type="text"
             className="form-control mb-2"
-            id="surname"
-            value={data.surname}
+            id="phone_number"
+            name="phone_number"
+            value={data.phone_number}
             onChange={handleInput}
-            name="surname"
           />
-          <p className="text-danger">{errors.surname}</p>
+          <p className="text-danger">{errors.phone_number}</p>
+
           <label for="email" className="mb-1">
             Почта
           </label>
@@ -90,6 +108,7 @@ const Registration = () => {
             id="email"
             name="email"
             onChange={handleInput}
+            value={data.email}
           />
           <p className="text-danger">{errors.email}</p>
           <label for="password" className="mb-1">
@@ -101,6 +120,7 @@ const Registration = () => {
             id="password"
             name="password"
             onChange={handleInput}
+            value={data.password}
           />
           <p className="text-danger ">{errors.password}</p>
           <button className="w-100 btn btn-primary mb-4 mt-2" type="submit">

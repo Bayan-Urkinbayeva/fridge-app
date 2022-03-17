@@ -9,10 +9,12 @@ const Login = () => {
     const password = e.target["password"].value;
     try {
       const { data } = await login(email, password);
+      console.log(data);
+      if (data.status == false) return alert(data.message);
+
       const token = data.data.token;
       localStorage.setItem("token", token);
       setJwt();
-      if (data.status == false) alert(data.message);
       window.location = "/";
     } catch (ex) {
       console.log(ex);
@@ -22,7 +24,7 @@ const Login = () => {
     <div className="d-flex align-items-center h-100">
       <main className="form-signin m-auto w-100" style={{ maxWidth: "300px" }}>
         <form onSubmit={(e) => onSubmit(e)}>
-        <h1 className="text-center">🍏</h1>
+          <h1 className="text-center">🍏</h1>
           <h1 className="h3 mb-3 fw-normal text-center fw-bold">Grab it</h1>
           <label for="floatingInput" className="mb-1">
             Почта

@@ -59,10 +59,8 @@ const Registration = () => {
     }
     if (!values.password) {
       errors.password = "Поле пороль не может быть пустым";
-    } else if (values.password.length < 4) {
-      errors.password = "Пороль должен быть более 4 символов";
-    } else if (values.password.length > 10) {
-      errors.password = "Пороль должен быть менее 10 символов";
+    } else if (values.password.length < 8) {
+      errors.password = "Пороль должен быть более 8 символов";
     }
     return errors;
   };

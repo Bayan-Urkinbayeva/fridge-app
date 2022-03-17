@@ -7,6 +7,10 @@ axios.interceptors.response.use(null, (error) => {
     error.response &&
     error.response.status >= 400 &&
     error.response.status < 500;
+  if (error.response.status == 401) {
+    localStorage.removeItem("token");
+    window.location = "/login";
+  }
   if (!expectedError) {
     console.log(error);
   }

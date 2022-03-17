@@ -5,7 +5,7 @@ import { login, setJwt } from "../services/authService";
 const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target["login"].value;
+    const email = e.target["email"].value;
     const password = e.target["password"].value;
     try {
       const { data } = await login(email, password);
@@ -31,7 +31,7 @@ const Login = () => {
             type="text"
             className="form-control mb-3"
             id="floatingInput"
-            name="login"
+            name="email"
             placeholder="name@example.com"
           />
           <div className="d-flex justify-content-between mb-1">

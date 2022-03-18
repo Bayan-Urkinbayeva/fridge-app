@@ -109,6 +109,7 @@ const Registration = () => {
             value={data.email}
           />
           <p className="text-danger">{errors.email}</p>
+
           <label for="password" className="mb-1">
             Пароль
           </label>
@@ -121,6 +122,7 @@ const Registration = () => {
             value={data.password}
           />
           <p className="text-danger ">{errors.password}</p>
+          
           <button className="w-100 btn btn-primary mb-4 mt-2" type="submit">
             Зарегистрироваться
           </button>

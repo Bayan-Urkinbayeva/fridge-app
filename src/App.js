@@ -52,7 +52,7 @@ function App() {
         />
         <Route exact path="/registration" element={<Registration />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/scanme" element={<ScanMe />} />
+        <Route exact path="/scanme/:id" element={<ScanMe />} />
       </Routes>
     </div>
   );

@@ -19,6 +19,9 @@ const Orders = () => {
       <div className="p-2 pt-5 mt-3">
         {loading && <Spinner />}
         <div className="list-group">
+          {orders.length == 0 && !loading && (
+            <p className="text-center">Пока нет покупок!</p>
+          )}
           {orders.map((order) => (
             <Link
               to={`/orders/${order.id}`}

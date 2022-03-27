@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     const errors = validate(loginData);
     setErrors(errors);
-    if(Object.keys(errors).length!=0) return;
+    if (Object.keys(errors).length != 0) return;
 
     try {
       const { data } = await login(loginData.email, loginData.password);
@@ -89,7 +89,10 @@ const Login = () => {
             value={loginData.password}
           />
           <p className="text-danger">{errors.password}</p>
-          <button className="w-100 btn btn-primary mb-4" type="submit">
+          <button
+            className="w-100 btn bg-blue-500 text-white mb-4"
+            type="submit"
+          >
             Войти
           </button>
           <span className="d-flex justify-content-center">

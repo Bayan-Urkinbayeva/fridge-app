@@ -7,7 +7,7 @@ import Profile from "./pages/Profile";
 import Order from "./pages/Order";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
-import ScanMe from "./pages/ScanMe";
+import ScanMe from "./pages/ScanMe/ScanMe";
 import ProtectedRoute from "./components/protectedRoute";
 
 function App() {

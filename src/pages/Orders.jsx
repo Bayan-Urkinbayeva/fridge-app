@@ -19,18 +19,23 @@ const Orders = () => {
       <div className="p-2 pt-5 mt-3">
         {loading && <Spinner />}
         <div className="list-group">
+          {orders.length == 0 && !loading && (
+            <p className="text-center">Пока нет покупок!</p>
+          )}
           {orders.map((order) => (
             <Link
               to={`/orders/${order.id}`}
               href="#"
-              className="list-group-item list-group-item-action p-3"
+              className="list-group-item list-group-item-action px-4 py-3"
             >
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1 ">{order.fridge.name}</h5>
+              <div className="d-flex w-100 justify-content-between mb-2">
+                <h5 className="text-lg capitalize font-medium">
+                  {order.fridge_name}
+                </h5>
                 <small className="text-muted">#{order.id}</small>
               </div>
-              <p className="mb-1">Время покупки: {order.time}</p>
-              <p className="mb-1">Цена: {order.purchased_price} тг</p>
+              <p className="text-sm">Время покупки: {order.time}</p>
+              <p className="text-sm">Цена: {order.purchased_price} тг</p>
             </Link>
           ))}
         </div>

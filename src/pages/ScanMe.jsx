@@ -34,7 +34,7 @@ const ScanMe = () => {
   }, [setSocket]);
 
   return (
-    <div className="h-100">
+    <div className="h-full">
       <Navbar title={"Сканирование"} />
       {status == 0 ? (
         <FridgeOpening />

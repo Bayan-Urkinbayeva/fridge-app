@@ -11,7 +11,7 @@ const Orders = () => {
   useEffect(async () => {
     const res = await getOrders();
     setLoading(false);
-    setOrders(res.data.data);
+    setOrders(res.data);
   }, []);
   return (
     <div>

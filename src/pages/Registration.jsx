@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { setJwt } from "../services/authService";
 import { register } from "../services/userService";
+import Input from "../components/Input";
 const Registration = () => {
   const [data, setData] = useState({
     name: "",
@@ -45,22 +46,22 @@ const Registration = () => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
-      errors.name = "Поле имя не может быть пустым";
+      errors.name = "Имя не может быть пустым";
     }
     if (!values.phone_number) {
-      errors.phone_number = "Поле номер телефона не может быть пустым";
+      errors.phone_number = "Номер не может быть пустым";
     } else if (values.phone_number.length !== 11) {
       errors.phone_number = "Неправильный номер телефона";
     }
     if (!values.email) {
-      errors.email = "Поле почта не может быть пустым";
+      errors.email = "Почта не может быть пустым";
     } else if (!regex.test(values.email)) {
       errors.email = "Введите корректный адрес";
     }
     if (!values.password) {
-      errors.password = "Поле пороль не может быть пустым";
+      errors.password = "Пароль не может быть пустым";
     } else if (values.password.length < 8) {
-      errors.password = "Пороль должен быть более 8 символов";
+      errors.password = "Пароль должен быть более 8 символов";
     }
     return errors;
   };
@@ -71,57 +72,10 @@ const Registration = () => {
         <form onSubmit={(e) => onSubmit(e)}>
           <h1 className="text-center">🍏</h1>
           <h1 className="mb-3 text-center font-bold text-[18px]">Grab it</h1>
-          <label for="name" className="mb-1">
-            Имя
-          </label>
-          <input
-            type="text"
-            className="form-control border-2 mb-2 h-8 w-full outline-none"
-            id="name"
-            name="name"
-            value={data.name}
-            onChange={handleInput}
-          />
-          <p className="text-red-600 text-[14px]">{errors.name}</p>
-
-          <label for="phone_number" className="mb-1">
-            Номер телефона
-          </label>
-          <input
-            type="text"
-            className="form-control border-2 mb-2 h-8 w-full outline-none"
-            id="phone_number"
-            name="phone_number"
-            value={data.phone_number}
-            onChange={handleInput}
-          />
-          <p className="text-red-600 text-[14px]">{errors.phone_number}</p>
-
-          <label for="email" className="mb-1">
-            Почта
-          </label>
-          <input
-            type="text"
-            className="form-control border-2 mb-2 h-8 w-full outline-none"
-            id="email"
-            name="email"
-            onChange={handleInput}
-            value={data.email}
-          />
-          <p className="text-red-600 text-[14px]">{errors.email}</p>
-
-          <label for="password" className="mb-1">
-            Пароль
-          </label>
-          <input
-            type="password"
-            className="form-control border-2 mb-2 h-8 w-full outline-none"
-            id="password"
-            name="password"
-            onChange={handleInput}
-            value={data.password}
-          />
-          <p className="text-red-600 text-[14px] ">{errors.password}</p>
+          <Input label="Имя" name="name" value={data.name} onChange={handleInput} error={errors.name}/>
+          <Input label="Номер телефона" name="phone_number" value={data.phone_number} onChange={handleInput}  error={errors.phone_number}/>
+          <Input label="Почта" name="email" value={data.email} onChange={handleInput} error={errors.email}/>
+          <Input label="Пароль" name="password" value={data.password} onChange={handleInput} error={errors.password}/>
           <div className=" mt-4  login w-full flex justify-center">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-4 mt-2" type="submit">
             Зарегистрироваться

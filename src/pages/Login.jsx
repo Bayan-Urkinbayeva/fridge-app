@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Input from "../components/Input";
 import { login, setJwt } from "../services/authService";
 
 const Login = () => {
@@ -60,42 +61,15 @@ const Login = () => {
         <form onSubmit={(e) => onSubmit(e)}>
           <h1 className="text-center">🍏</h1>
           <h1 className="mb-3 font-bold text-center text-[18px]">Grab it</h1>
-          <div className="email flex flex-col mb-1">
-          <label for="floatingInput" className="mb-2">
-            Почта
-          </label>
-          <input
-            type="text"
-            className="form-control border-2 mb-2 h-8 w-full outline-none"
-            id="floatingInput"
-            name="email"
-            placeholder="name@example.com"
-            onChange={handleInput}
-            value={loginData.email}
-          />
+          <div>
+            <Input onChange={handleInput} name="email" value={loginData.email} label="Почта" error={errors.email} />
           </div>
-          <p className="text-red-600 text-[14px]">{errors.email}</p>
-          <div className="email flex flex-col items-center mt-4">
-          <div className=" w-full flex justify-between mb-1">
-            <label for="floatingPassword" className="mb-1">
-              Пароль
-            </label>
-            <Link to="/reset-password">
-              <p className="text-blue-600 text-center">Забыли пароль?</p>
+          <div className="mt-5">
+          <Input onChange={handleInput} name="password" value={loginData.password} label="Пароль" type="password" error={errors.password}/>
+          <Link to="/reset-password">
+              <p className="text-blue-600 text-right mt-2 text-[14px]">Забыли пароль?</p>
             </Link>
           </div>
-          <input
-            type="password"
-            className="form-control border-2 h-8 mb-2 w-full outline-none"
-            id="floatingPassword"
-            name="password"
-            placeholder="Password"
-            onChange={handleInput}
-            value={loginData.password}
-          />
-
-          </div>
-          <p className="text-red-600 text-[14px] text-start">{errors.password}</p>
           <div className=" mt-4  login w-full flex justify-center">
           <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-4" type="submit">
             Войти

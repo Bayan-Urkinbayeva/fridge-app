@@ -13,7 +13,7 @@ const ScanMe = () => {
   const [newSocket, setSocket] = useState(null);
   const [closed, setOpened] = useState(true);
   const [locked, setLocked] = useState(true);
-  const [status, setStatus] = useState(1);
+  const [status, setStatus] = useState(2);
   const { id } = useParams();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const ScanMe = () => {
   };
 
   return (
-    <div className="h-100 py-20">
+    <div className="h-full py-20">
       <Navbar title={"Grab it 🍏"} />
       <p className="text-center absolute top-20 left-1/2 -translate-x-1/2">
         Холодильник: #{id}

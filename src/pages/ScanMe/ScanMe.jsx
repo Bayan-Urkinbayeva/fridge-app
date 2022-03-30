@@ -8,10 +8,11 @@ import FirdgeBusy from "./FridgeBusy";
 import PurchaseStart from "./PurchaseStart";
 import LockTimer from "./LockTimer";
 import Welcome from "./Welcome";
+import FirdgeError from "./FridgeError";
 
 const ScanMe = () => {
   const [newSocket, setSocket] = useState(null);
-  const [closed, setOpened] = useState(true);
+  const [closed, setClosed] = useState(true);
   const [locked, setLocked] = useState(true);
   const [status, setStatus] = useState(2);
   const { id } = useParams();
@@ -25,13 +26,19 @@ const ScanMe = () => {
     });
 
     newSocket.on("closed", ({ state }) => {
-      setOpened(state);
-      setStatus(3);
+      setClosed(state);
+      if (state) {
+        setStatus(3);
+        console.log("Finish!");
+        newSocket.disconnect();
+      } else {
+        setStatus(2);
+      }
     });
 
     newSocket.on("locked", ({ state }) => {
       setLocked(state);
-      setSocket(2);
+      // if (state) setStatus(2);
     });
 
     newSocket.on("info", ({ msg }) => {
@@ -49,8 +56,14 @@ const ScanMe = () => {
   const openDoor = () => {
     console.log("Open send");
     const token = localStorage.getItem("token");
+    console.log(newSocket);
     newSocket.emit("direct", { receiver: id, sender: token, signal: "open" });
     setStatus(1);
+  };
+
+  const timerComplate = () => {
+    if (closed) return setStatus(0);
+    setStatus(2);
   };
 
   return (
@@ -62,7 +75,7 @@ const ScanMe = () => {
       {status == 0 ? (
         <Welcome onTap={openDoor} />
       ) : status == 1 ? (
-        <LockTimer />
+        <LockTimer onComplate={timerComplate} />
       ) : status == 2 ? (
         <PurchaseStart />
       ) : status == 3 ? (
@@ -70,7 +83,7 @@ const ScanMe = () => {
       ) : status == 4 ? (
         <FirdgeBusy />
       ) : (
-        <p></p>
+        <FirdgeError />
       )}
     </div>
   );

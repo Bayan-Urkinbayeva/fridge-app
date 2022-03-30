@@ -23,7 +23,6 @@ function setJwt(jwt) {
 
 (function () {
   const token = localStorage.getItem("token");
-  console.log("request call");
   if (token) {
     axios.defaults.headers.common["Authorization"] = token;
   } else {

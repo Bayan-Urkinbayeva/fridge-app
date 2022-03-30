@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-const LockTimer = () => {
+const LockTimer = ({ totalMillis = 5000, onComplate }) => {
   const [progress, setPorgress] = useState(100);
+  const [millis, setMillis] = useState(totalMillis);
 
   useEffect(() => {
     let interval = setInterval(() => {
-      if (progress > 0) {
-        setPorgress((progress) => progress - 3);
+      if (millis < 0) {
+        clearInterval(interval);
+        onComplate();
       }
-    }, 100);
+      setPorgress((millis * 100) / totalMillis);
+      setMillis((millis) => millis - 1);
+    }, 1);
 
     return () => clearInterval(interval);
-  }, [progress]);
+  }, [progress, millis]);
 
   return (
     <div className="h-full flex flex-col items-center justify-center">

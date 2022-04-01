@@ -16,9 +16,9 @@ const Orders = () => {
   return (
     <div>
       <Navbar title={"Покупки"} />
-      <div className="p-2 pt-5 mt-3">
+      <div className="p-2 pt-16 mt-3">
         {loading && <Spinner />}
-        <div className="list-group">
+        <div className="flex flex-col">
           {orders.length == 0 && !loading && (
             <p className="text-center">Пока нет покупок!</p>
           )}
@@ -26,13 +26,13 @@ const Orders = () => {
             <Link
               to={`/orders/${order.id}`}
               href="#"
-              className="list-group-item list-group-item-action px-4 py-3"
+              className="border rounded-md px-4 py-3"
             >
-              <div className="d-flex w-100 justify-content-between mb-2">
+              <div className="flex w-full justify-between mb-2">
                 <h5 className="text-lg capitalize font-medium">
                   {order.fridge_name}
                 </h5>
-                <small className="text-muted">#{order.id}</small>
+                <small className="text-gray-500">#{order.id}</small>
               </div>
               <p className="text-sm">Время покупки: {order.time}</p>
               <p className="text-sm">Цена: {order.purchased_price} тг</p>

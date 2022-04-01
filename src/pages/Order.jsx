@@ -12,7 +12,7 @@ const Order = () => {
   const [loading, setLoading] = useState(true);
   useEffect(async () => {
     const res = await getOrder(id);
-    const order = res.data.data;
+    const order = res.data;
     console.log(order);
     setItems(order.items);
     setDetails({
@@ -30,47 +30,46 @@ const Order = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="pt-5 mt-3">
-          <ul className="list-group px-2 ">
-            <li className="list-group-item text-center p-3 fw-bold">
+        <div className="pt-16 px-2 mt-3">
+          <ul className="px-4 py-2 border rounded-md">
+            <h1 className="text-center p-3 font-medium">
               Детали покупки
-            </li>
-            <li className="list-group-item d-flex align-items-center justify-content-between">
+            </h1>
+            <li className="flex items-center justify-between">
               <span>Название: </span>
               <span>{details.fridgeName}</span>
             </li>
-            <li className="list-group-item d-flex align-items-center justify-content-between">
+            <li className="flex items-center justify-between">
               <span>Адрес: </span>
               <span>{details.locationName}</span>
             </li>
-            <li className="list-group-item d-flex align-items-center justify-content-between">
+            <li className="flex items-center justify-between">
               <span>Дата покупки: </span>
               <span>{details.time}</span>
             </li>
-            <li className="list-group-item text-center p-3 fw-bold">
+            <h1 className="text-center font-medium mt-6">
               Купленные продукты
-            </li>
+            </h1>
             {items.map((item) => (
               <div
                 href="#"
-                className="list-group-item list-group-item-action d-flex gap-3 py-3"
+                className="flex items-center gap-3 py-3"
                 aria-current="true"
               >
                 <img
                   src={item.image}
                   alt=""
-                  width="48"
-                  height="48"
-                  className="rounded-circle flex-shrink-0 img-fit"
+                  
+                  className="rounded-circle w-16 h-16 flex-shrink-0 img-fit"
                 />
-                <div className="d-flex gap-2 w-100 justify-content-between">
+                <div className="flex gap-2 w-full justify-between">
                   <div>
-                    <h6 className="mb-0">{item.name}</h6>
-                    <p className="mb-0 opacity-75">
+                    <h6 className="mb-0 font-medium" >{item.name}</h6>
+                    <p className="mb-2 text-gray-500 text-sm">
                       Срок годности: {item.expired_at}
                     </p>
-                    <h6 className="mb-0">
-                      Цена: {item.cost} тг - {item.pivot.purchased_count}шт
+                    <h6 className="mb-0 font-medium">
+                     {item.cost} тг - {item.pivot.purchased_count}шт
                     </h6>
                   </div>
                 </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/solid";
 
 const LockTimer = ({ totalMillis = 5000, onComplate }) => {
   const [progress, setPorgress] = useState(100);
@@ -11,7 +12,7 @@ const LockTimer = ({ totalMillis = 5000, onComplate }) => {
         onComplate();
       }
       setPorgress((millis * 100) / totalMillis);
-      setMillis((millis) => millis - 1);
+      setMillis((millis) => millis - 2);
     }, 1);
 
     return () => clearInterval(interval);

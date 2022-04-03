@@ -27,6 +27,7 @@ const Orders = () => {
               to={`/orders/${order.id}`}
               href="#"
               className="border rounded-md px-4 py-3"
+              key={order.id}
             >
               <div className="flex w-full justify-between mb-2">
                 <h5 className="text-lg capitalize font-medium">

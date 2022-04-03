@@ -55,6 +55,7 @@ const Order = () => {
                 href="#"
                 className="flex items-center gap-3 py-3"
                 aria-current="true"
+                key={item.id}
               >
                 <img
                   src={item.image}

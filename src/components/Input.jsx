@@ -1,9 +1,8 @@
 import React from "react";
-
-const Input = ({ label, name, value, onChange, placeholder="", type="text", error }) => {
+const Input = ({ label, name, value, onChange, placeholder="", type="text", error , ...rest}) => {
   return (
     <>
-      <label for={name}>
+      <label className="font-medium" for={name}>
         {label}
       </label>
       <input
@@ -20,6 +19,8 @@ const Input = ({ label, name, value, onChange, placeholder="", type="text", erro
         onChange={onChange}
         value={value}
         type={type}
+
+        {...rest}
       />
       <p className="text-red-600 text-[14px] mb-2">{error}</p>
     </>

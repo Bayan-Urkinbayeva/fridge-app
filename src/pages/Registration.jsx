@@ -70,8 +70,8 @@ const Registration = () => {
     <div className="flex items-center h-full">
       <main className="form-signin m-auto w-full" style={{ maxWidth: "300px" }}>
         <form onSubmit={(e) => onSubmit(e)}>
-          <h1 className="text-center">🍏</h1>
-          <h1 className="mb-3 text-center font-bold text-[18px]">Grab it</h1>
+        <h1 className="text-center text-lg">🍏</h1>
+          <h1 className="mb-8 font-bold text-center text-2xl">Grab it</h1>
           <Input label="Имя" name="name" value={data.name} onChange={handleInput} error={errors.name}/>
           <Input label="Номер телефона" name="phone_number" value={data.phone_number} onChange={handleInput}  error={errors.phone_number}/>
           <Input label="Почта" name="email" value={data.email} onChange={handleInput} error={errors.email}/>

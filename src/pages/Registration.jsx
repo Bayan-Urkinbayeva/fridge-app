@@ -36,7 +36,7 @@ const Registration = () => {
         const token = response.data.token;
         localStorage.setItem("token", token);
         setJwt();
-        // window.location = "/";
+        window.location = "/";
       } catch (ex) {
         setErrors({name: "Пользователь уже зарегистрирован"});
       }

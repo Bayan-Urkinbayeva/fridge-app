@@ -41,12 +41,12 @@ const YandexMaps = ({fridges=[]}) => {
               options={{ preset: "islands#geolocationIcon" }}
               modules={["geoObject.addon.balloon"]}
               properties={{
-                balloonContentBody: `<ul className="list-group">
-                  <li className="list-group-item disabled">${fridge.name}</li>
-                  <li className="list-group-item">Dapibus ac facilisis in</li>
-                  <li className="list-group-item">Morbi leo risus</li>
-                  <li className="list-group-item">Porta ac consectetur ac</li>
-                  <li className="list-group-item">Vestibulum at eros</li>
+                balloonContentBody: `<ul>
+                  <li>${fridge.name}</li>
+                  <li>Dapibus ac facilisis in</li>
+                  <li>Morbi leo risus</li>
+                  <li>Porta ac consectetur ac</li>
+                  <li>Vestibulum at eros</li>
                 </ul>`,
               }}
             />

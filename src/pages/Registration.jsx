@@ -31,15 +31,16 @@ const Registration = () => {
           password: data.password,
         };
 
-        console.log(body);
         const response = await register(body);
-        const token = response.data.data.token;
+        console.log(response);
+        const token = response.data.token;
         localStorage.setItem("token", token);
         setJwt();
+        // window.location = "/";
       } catch (ex) {
-        console.log(ex);
+        setErrors({name: "Пользователь уже зарегистрирован"});
       }
-      window.location = "/";
+      
     }
   };
   const validate = (values) => {
@@ -73,9 +74,9 @@ const Registration = () => {
         <h1 className="text-center text-lg">🍏</h1>
           <h1 className="mb-8 font-bold text-center text-2xl">Grab it</h1>
           <Input label="Имя" name="name" value={data.name} onChange={handleInput} error={errors.name}/>
-          <Input label="Номер телефона" name="phone_number" value={data.phone_number} onChange={handleInput}  error={errors.phone_number}/>
-          <Input label="Почта" name="email" value={data.email} onChange={handleInput} error={errors.email}/>
-          <Input label="Пароль" name="password" value={data.password} onChange={handleInput} error={errors.password}/>
+          <Input label="Номер телефона" type="number" name="phone_number" value={data.phone_number} onChange={handleInput}  error={errors.phone_number}/>
+          <Input label="Почта" name="email" type="email" value={data.email} onChange={handleInput} error={errors.email}/>
+          <Input label="Пароль" name="password" type="password" value={data.password} onChange={handleInput} error={errors.password}/>
           <div className=" mt-4  login w-full flex justify-center">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-4 mt-2" type="submit">
             Зарегистрироваться

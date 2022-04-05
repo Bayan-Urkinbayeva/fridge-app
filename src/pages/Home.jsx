@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 import { getFridges } from "../services/fridgeService";
 const Home = () => {
   const [fridges, setFridges] = useState([]);
-  useEffect( async ()=>{
+  useEffect(async() => {
     const {data: fridges} = await getFridges();
     setFridges(fridges);
-  });
+  }, []);
   return (
     <div>
       <Navbar title={"Grab it 🍏"} />
-      <YandexMaps />
+      <YandexMaps fridges={fridges}/>
       <Navigation />
     </div>
   );

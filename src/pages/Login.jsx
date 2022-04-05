@@ -15,23 +15,18 @@ const Login = () => {
     e.preventDefault();
     const errors = validate(loginData);
     setErrors(errors);
+    
     if (Object.keys(errors).length != 0) return;
 
     try {
-      const { data } = await login(loginData.email, loginData.password);
-      console.log(data);
-      if (data.status == false) {
-        setErrors({ email: data.message });
-        return;
-      }
-
+      const  res  = await login(loginData.email, loginData.password); 
+      const data = res.data;
       const token = data.token;
-      console.log(token);
       localStorage.setItem("token", token);
       setJwt();
       window.location = "/";
     } catch (ex) {
-      console.log(ex);
+      setErrors({ email: ex.response.data.message});
     }
   };
 

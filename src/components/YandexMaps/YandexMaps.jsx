@@ -10,6 +10,7 @@ const YandexMaps = ({fridges=[]}) => {
     navigator.geolocation.getCurrentPosition((position) => {
       setcurrentLatitude(position.coords.latitude);
       setcurrentLongitude(position.coords.longitude);
+      
     });
   }, [navigator.geolocation]);
 
@@ -36,17 +37,17 @@ const YandexMaps = ({fridges=[]}) => {
 
           {fridges.map((fridge) => (
             <Placemark
-              defaultGeometry={[fridge.coords.latitude, fridge.coords.longitude]}
+              defaultGeometry={[fridge.location.latitude, fridge.location.longitude]}
               key={fridge.id}
               options={{ preset: "islands#geolocationIcon" }}
               modules={["geoObject.addon.balloon"]}
               properties={{
-                balloonContentBody: `<ul className="list-group">
-                  <li className="list-group-item disabled">${fridge.name}</li>
-                  <li className="list-group-item">Dapibus ac facilisis in</li>
-                  <li className="list-group-item">Morbi leo risus</li>
-                  <li className="list-group-item">Porta ac consectetur ac</li>
-                  <li className="list-group-item">Vestibulum at eros</li>
+                balloonContentBody: `<ul>
+                  <li>${fridge.name}</li>
+                  <li>${fridge.location.city}</li>
+                  <li>${fridge.location.district}</li>
+                  <li>${fridge.location.name}</li>
+                  <li></li>
                 </ul>`,
               }}
             />

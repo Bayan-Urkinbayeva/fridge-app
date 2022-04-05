@@ -10,6 +10,7 @@ const YandexMaps = ({fridges=[]}) => {
     navigator.geolocation.getCurrentPosition((position) => {
       setcurrentLatitude(position.coords.latitude);
       setcurrentLongitude(position.coords.longitude);
+      
     });
   }, [navigator.geolocation]);
 
@@ -36,7 +37,7 @@ const YandexMaps = ({fridges=[]}) => {
 
           {fridges.map((fridge) => (
             <Placemark
-              defaultGeometry={[fridge.coords.latitude, fridge.coords.longitude]}
+              defaultGeometry={[fridge.location.latitude, fridge.location.longitude]}
               key={fridge.id}
               options={{ preset: "islands#geolocationIcon" }}
               modules={["geoObject.addon.balloon"]}

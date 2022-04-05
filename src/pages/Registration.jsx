@@ -32,8 +32,7 @@ const Registration = () => {
         };
 
         const response = await register(body);
-        console.log(response);
-        const token = response.data.token;
+        const token = response.data.token; 
         localStorage.setItem("token", token);
         setJwt();
         window.location = "/";

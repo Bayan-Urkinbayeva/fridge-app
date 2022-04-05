@@ -44,10 +44,10 @@ const YandexMaps = ({fridges=[]}) => {
               properties={{
                 balloonContentBody: `<ul>
                   <li>${fridge.name}</li>
-                  <li>Dapibus ac facilisis in</li>
-                  <li>Morbi leo risus</li>
-                  <li>Porta ac consectetur ac</li>
-                  <li>Vestibulum at eros</li>
+                  <li>${fridge.location.city}</li>
+                  <li>${fridge.location.district}</li>
+                  <li>${fridge.location.name}</li>
+                  <li></li>
                 </ul>`,
               }}
             />
